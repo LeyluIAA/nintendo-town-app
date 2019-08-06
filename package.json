@@ -10,7 +10,7 @@
     "test:unit": "vue-cli-service test:unit",
     "prettier:format-all": "prettier --write \"**/*.{vue,scss,sass,js,json}\"",
     "prettier:check": "prettier \"**/*.{vue,scss,sass,js,json}\" --list-different",
-    "firebase:deploy:ci": "firebase deploy --non-interactive --token $FIREBASE_TOKEN",
+    "firebase:deploy:ci": "firebase deploy --non-interactive --token 1/8NZRprLhY-t3QCWhJf8W_7SoFUJiVdx8EqL4MYwix74",
     "bundlesize": "bundlesize"
   },
   "engines": {
