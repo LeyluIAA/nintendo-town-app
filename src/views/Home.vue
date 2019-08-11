@@ -1,7 +1,11 @@
 <template>
   <div class="page-wrapper">
     <h1 class="home-page-title">{{ appTitle }}</h1>
-    <img alt="logo-bento" class="logo" src="@/assets/img/bento-starter.svg" />
+    <img
+      alt="logo-nintendo-town"
+      class="logo"
+      src="@/assets/img/bento-starter.svg"
+    />
 
     <a
       rel="noopener"

@@ -1,4 +1,4 @@
-# My bento-starter project
+# My Nintendo-town-app project
 
 ## Documentation
 
