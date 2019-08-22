@@ -48,4 +48,20 @@ export default {
     border-color: $danger-color;
   }
 }
+
+.card {
+  box-shadow: 0px 3px 3px 0px rgba(56, 56, 56, 0.59);
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 0.8rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
 </style>
