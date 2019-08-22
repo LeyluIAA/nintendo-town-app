@@ -1,26 +1,15 @@
 <template>
   <div class="page-wrapper">
-    <h1 class="home-page-title">{{ appTitle }}</h1>
-    <img
-      alt="logo-nintendo-town"
-      class="logo"
-      src="@/assets/img/bento-starter.svg"
-    />
-
-    <a
-      rel="noopener"
-      class="documentation-link"
-      target="_blank"
-      href="https://bento-starter.netlify.com/"
-      >Documentation →</a
-    >
+    <post-list></post-list>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import PostList from '@/components/PostList'
 
 export default {
+  components: { PostList },
   head: function() {
     return {
       title: {

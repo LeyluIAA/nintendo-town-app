@@ -32,7 +32,7 @@ export default {
 @import '@/theme/variables.scss';
 
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 20;
@@ -40,7 +40,6 @@ export default {
   height: $navbar-height;
   background-color: $navbar-color;
   box-sizing: border-box;
-  border-bottom: 1px solid #eaecef;
   padding: 0.7rem 1.5rem;
   line-height: 2.2rem;
   justify-content: center;

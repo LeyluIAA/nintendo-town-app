@@ -6,8 +6,8 @@
         <img class="app-logo" src="@/assets/img/logo_nintendo_town.png" />
         <h3 class="title">Install {{ appTitle }}</h3>
         <p class="description">
-          Install this application to your home screen for quickly and easy
-          access when you're on the go.
+          Installez cette application sur votre écran d'accueil pour y accéder
+          plus facilement et rapidement.
         </p>
       </div>
 
