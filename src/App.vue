@@ -78,7 +78,7 @@ body {
       padding: 10px;
 
       .page-wrapper {
-        width: 60%;
+        width: 100%;
         margin: auto;
 
         @media screen and (max-width: 1000px) {

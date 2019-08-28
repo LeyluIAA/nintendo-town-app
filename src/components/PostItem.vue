@@ -6,7 +6,7 @@
       img-alt="Image"
       img-top
       tag="article"
-      style="max-width: 25rem;"
+      style="width: 100%;"
       class="mb-2"
     >
     </b-card>
@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    data: Object,
+    data: Array,
     index: Number,
     isProductDeletionPending: Boolean,
     disableActions: Boolean
@@ -50,7 +50,7 @@ export default {
 }
 
 .card {
-  box-shadow: 0px 3px 3px 0px rgba(56, 56, 56, 0.59);
+  box-shadow: 0px 2px 2px 0px rgba(56, 56, 56, 0.59);
 }
 
 .card-title {

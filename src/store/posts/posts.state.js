@@ -1,5 +1,5 @@
 export default {
-  posts: null,
+  posts: [],
   postNameToCreate: '',
   postDeletionPending: [],
   postCreationPending: false

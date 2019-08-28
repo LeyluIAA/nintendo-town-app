@@ -1,6 +1,6 @@
 export default {
   /* Posts */
-  setPosts: (state, posts) => (state.posts = posts),
+  setPosts: (state, posts) => state.posts.concat(posts),
   addPost: (state, post) => state.posts.push(post),
   removeProductById: (state, postId) => {
     const index = state.posts.findIndex(post => post.id === postId)
