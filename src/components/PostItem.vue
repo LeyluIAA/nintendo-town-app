@@ -16,7 +16,7 @@
 <script>
 export default {
   props: {
-    data: Array,
+    data: Object,
     index: Number,
     isProductDeletionPending: Boolean,
     disableActions: Boolean

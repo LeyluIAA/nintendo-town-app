@@ -1,12 +1,11 @@
 <template>
   <div v-if="dataReady">
-    {{ posts }}
-    <p v-if="posts === null" class="infos-label">Chargement...</p>
-    <p v-if="posts && !posts.length" class="infos-label">
+    <p v-if="lesPosts === null" class="infos-label">Chargement...</p>
+    <p v-if="lesPosts && !lesPosts.length" class="infos-label">
       Vous n'avez pas encore de news Nintendo-Town :(
     </p>
     <post-item
-      v-for="(post, index) in posts"
+      v-for="(post, index) in lesPosts"
       :key="post.id"
       class="post-row"
       :index="index"
@@ -15,7 +14,7 @@
       :data="post"
     ></post-item>
     <infinite-loading spinner="spiral" @infinite="infiniteHandler">
-      <div slot="spinner">Chargement...</div>
+      <!-- <div slot="spinner">Chargement...</div> -->
       <div slot="no-more">Vous avez épuisé toutes les news !</div>
       <div slot="no-results" class="infos-label">
         Vous n'avez pas encore de news Nintendo-Town :(
@@ -28,34 +27,34 @@
 import PostItem from '@/components/PostItem'
 import postService from '@/services/posts'
 import InfiniteLoading from 'vue-infinite-loading'
-import { mapGetters, mapState, mapMutations } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
+//import axios from 'axios';
 
 export default {
   components: { PostItem, InfiniteLoading },
   data() {
     return {
       dataReady: false,
-      page: 1
+      page: 1,
+      lesPosts: []
     }
   },
   computed: {
     ...mapGetters('posts', ['isPostDeletionPending']),
-    ...mapState('posts', ['posts']),
     ...mapState('app', ['networkOnLine'])
   },
   async mounted() {
-    const posts = await postService.getAll(1)
-    this.setPosts(posts.data)
+    const posts = await postService.getAll(this.page)
+    this.lesPosts = posts.data
     this.page += 1
     this.dataReady = true
   },
   methods: {
-    ...mapMutations('posts', ['setPosts']),
     async infiniteHandler($state) {
       const posts = await postService.getAll(this.page)
-      if (posts.length) {
+      if (posts.data.length) {
         this.page += 1
-        this.setPosts(posts.data)
+        this.lesPosts.push(...posts.data)
         $state.loaded()
       } else {
         $state.complete()
