@@ -14,7 +14,6 @@
       :data="post"
     ></post-item>
     <infinite-loading spinner="spiral" @infinite="infiniteHandler">
-      <!-- <div slot="spinner">Chargement...</div> -->
       <div slot="no-more">Vous avez épuisé toutes les news !</div>
       <div slot="no-results" class="infos-label">
         Vous n'avez pas encore de news Nintendo-Town :(
@@ -26,9 +25,9 @@
 <script>
 import PostItem from '@/components/PostItem'
 import postService from '@/services/posts'
+import categoryService from '@/services/categories'
 import InfiniteLoading from 'vue-infinite-loading'
 import { mapGetters, mapState } from 'vuex'
-//import axios from 'axios';
 
 export default {
   components: { PostItem, InfiniteLoading },
@@ -36,7 +35,8 @@ export default {
     return {
       dataReady: false,
       page: 1,
-      lesPosts: []
+      lesPosts: [],
+      lesCategories: {}
     }
   },
   computed: {
@@ -45,7 +45,13 @@ export default {
   },
   async mounted() {
     const posts = await postService.getAll(this.page)
-    this.lesPosts = posts.data
+    const categories = await categoryService.getAll()
+
+    categories.data.forEach(category => {
+      this.lesCategories[category.id] = category.name
+    })
+    this.lesPosts = this.formatCategories(posts.data)
+
     this.page += 1
     this.dataReady = true
   },
@@ -54,11 +60,20 @@ export default {
       const posts = await postService.getAll(this.page)
       if (posts.data.length) {
         this.page += 1
-        this.lesPosts.push(...posts.data)
+        this.lesPosts.push(...this.formatCategories(posts.data))
         $state.loaded()
       } else {
         $state.complete()
       }
+    },
+    formatCategories(somePosts) {
+      somePosts.forEach(post => {
+        post.categoryNames = []
+        post.categories.forEach(category => {
+          post.categoryNames.push(this.lesCategories[category])
+        })
+      })
+      return somePosts
     }
   }
 }

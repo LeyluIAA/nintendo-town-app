@@ -9,6 +9,14 @@
       style="width: 100%;"
       class="mb-2"
     >
+      <b-badge
+        v-for="category in data.categoryNames"
+        :key="category.id"
+        pill
+        class="badge"
+      >
+        {{ category }}
+      </b-badge>
     </b-card>
   </div>
 </template>
@@ -63,5 +71,10 @@ export default {
 
 h4 {
   font-size: 1.2rem;
+}
+
+.badge {
+  background-color: $navbar-color;
+  margin-right: 1%;
 }
 </style>
