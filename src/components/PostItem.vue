@@ -8,7 +8,9 @@
       style="width: 100%;"
       class="mb-2"
     >
-      <b-card-title v-html="data.title.rendered" class="post-title"></b-card-title>
+      // eslint-disable-next-line vue/no-v-html
+      <b-card-title class="post-title" v-html="data.title.rendered">
+      </b-card-title>
       <b-badge
         v-for="category in data.categoryNames"
         :key="category.id"
