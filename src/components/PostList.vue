@@ -50,6 +50,7 @@ export default {
     categories.data.forEach(category => {
       this.lesCategories[category.id] = category.name
     })
+    this.formatTitle(posts.data)
     this.lesPosts = this.formatCategories(posts.data)
 
     this.page += 1
@@ -72,6 +73,12 @@ export default {
         post.categories.forEach(category => {
           post.categoryNames.push(this.lesCategories[category])
         })
+      })
+      return somePosts
+    },
+    formatTitle(somePosts) {
+      somePosts.forEach(post => {
+        console.log('je formate', decodeURI(post.title.rendered))
       })
       return somePosts
     }

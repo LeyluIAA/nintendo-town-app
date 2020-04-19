@@ -1,7 +1,6 @@
 <template>
   <div class="product-item">
     <b-card
-      :title="data.title.rendered"
       :img-src="data.jetpack_featured_media_url"
       img-alt="Image"
       img-top
@@ -9,6 +8,7 @@
       style="width: 100%;"
       class="mb-2"
     >
+      <b-card-title v-html="data.title.rendered" class="post-title"></b-card-title>
       <b-badge
         v-for="category in data.categoryNames"
         :key="category.id"
@@ -71,6 +71,10 @@ export default {
 
 h4 {
   font-size: 1.2rem;
+}
+
+.post-title {
+  margin-bottom: 1%;
 }
 
 .badge {
